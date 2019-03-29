@@ -21,3 +21,7 @@ In this project, we manage to build a system including the function below :
 5. The system can send waiting chits to customers and record their position in the queue. Customer can check their position at anytime.
 6. The system will notify the staff when a table is ocuppied too long without new ordering.
 7. The owner can change the setting of the system such as the table numbers and the table size.
+8. The customer can check what food they have ordered and have it arrived.
+9. The customer can also check how much they need to pay for the bill.
+10. The owner can check what food each table has ordered and corresponding arrival.
+11. The owner can check whether each table has pay the bill or not. 
