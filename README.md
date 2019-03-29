@@ -3,7 +3,7 @@
 <pre>
 Group Member :  Yau Chak Hei  (3035565712)  
                 Cheung Ka Yuk (3035565889)
-Project idea :  Table management system  
+Project Idea :  Table Management System  
 </pre>
 
 ## Stage 1
