@@ -5,7 +5,7 @@ project idea : Table management system
 
 **Stage 1
 problem setting :**
-*A good mangaing system is helpful to a restaurants to manage some of the job such as occupancy, reservation, billing of their tables etc. This can reduce the manpower needed to handle some systematic job and avoid making man-made mistakes. In this project, we manage to build a system including the function below :
+A good mangaing system is helpful to a restaurants to manage some of the job such as occupancy, reservation, billing of their tables etc. This can reduce the manpower needed to handle some systematic job and avoid making man-made mistakes. In this project, we manage to build a system including the function below :
 
 1. The system will record the current occupancy and the reservation condition in the coming week and customer can check for these information at anytime.
 2. The customer can reserve the table by providing the time, number of people, surname, and phone number.
