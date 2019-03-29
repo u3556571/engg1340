@@ -1,11 +1,13 @@
-# ENGG 1340 Group Project Repo  
+**ENGG 1340 Group Project Repo** 
+
+------------------
 **Group 5**  
 <pre>
 Group Member :  Yau Chak Hei  (3035565712)  
                 Cheung Ka Yuk (3035565889)
 Project idea :  Table management system  
 </pre>
-  
+------------------
 **Stage 1**  
 **Problem setting :**
 A good mangaing system is helpful to a restaurants to manage some of the job such as occupancy, reservation, billing of their tables etc. This can reduce the manpower needed to handle some systematic job and avoid making man-made mistakes. In this project, we manage to build a system including the function below :
