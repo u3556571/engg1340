@@ -17,16 +17,16 @@ In this project, we manage to build a system including the function below :
 **The staff can:**  
   
 1. Check the current occupancy and the reservation condition in the coming week of each table.
-2. Check what food each table has ordered and corresponding arrival status.
+2. Check what food each table has ordered and the corresponding arrival status.
 3. Check how much each table has to pay and whether they have checked the bill or not.
 4. Get notified when a table is ocuppied too long without checking the bill.
 5. Change the setting of the system such as the amount of table or the table size.
   
 **The customers can:**  
   
-1. Request a table for now or to wait in the queue if there is not empty table currently.
+1. Request a table for now or to wait in the queue if there is no empty table at the time.
 2. Check what is their position in the waiting queue, and the estimated time for them to get a table.
-3. Check what food they have ordered and corresponding arrival status.
+3. Check what food they have ordered and the corresponding arrival status.
 4. Check how much they need to pay for the bill.
 5. Check the current occupancy and the reservation condition in the coming week of each table.
 6. Reserve tables in the coming week providing their surname, time, number of people, and their phone number.
@@ -34,5 +34,6 @@ In this project, we manage to build a system including the function below :
 
 **The system will:**  
   
-1. Turn the reserved table back into empty condition, if the customer hasn't shown up for a certain time after the reservation time.
-2. Notify the staff when a table is ocuppied too long without checking the bill.
+1. Calculate the estimated time for a waiting customer to get a table.
+2. Turn the reserved table back into empty condition, if the customer hasn't shown up for a certain time after the reservation time.
+3. Notify the staff when a table is ocuppied too long without ordering food or checking the bill.
