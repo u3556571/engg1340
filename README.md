@@ -1,8 +1,10 @@
 # ENGG 1340 Group Project Repo  
-#### Group 5  
-<pre>Group Member :  Yau Chak Hei  (3035565712)  
-                Cheung Ka Yuk (3035565889)</pre>
-project idea : Table management system 
+**Group 5**  
+<pre>
+Group Member :  Yau Chak Hei  (3035565712)  
+                Cheung Ka Yuk (3035565889)
+Project idea :  Table management system  
+</pre>
   
 **Stage 1**  
 **Problem setting :**
