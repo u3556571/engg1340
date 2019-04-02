@@ -1,0 +1,4 @@
+1 4 Occupied 13:43:14 Unpaid
+2 4 Available --:--:-- ------
+3 2 Available --:--:-- ------
+4 8 Occupied 13:12:58 Paid
