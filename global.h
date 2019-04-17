@@ -15,10 +15,13 @@ using namespace std;
 // global constant
 //
 const int MAX_NUM_OF_TABLE = 50;
+const int MAX_NUM_OF_BILLING = 50;
 const int MAX_NUM_OF_RESERVATION = 50;
 const int UI_WIDTH = 49;
 const string TABLE_INFO_FILE_NAME = "tableInfo.txt";
-const string FILE_DIRECTORY = "reservation/";
+const string BILLING_FILE_DIRECTORY = "billing/";
+const string RESERVATION_FILE_DIRECTORY = "reservation/";
+const string DISH_FILE_NAME = "dishList.txt"; 
 
 //
 // global structure
@@ -31,7 +34,13 @@ struct Table
     string occupy_time;
     string billing_status;
 };
-
+struct Billing
+{
+    int index;
+    string dish_name;
+    int price;
+    string arrival;
+};
 struct Reservation
 {
     string date;
@@ -40,13 +49,31 @@ struct Reservation
     int num_of_people;
     string phone_no;
 };
+struct Dish
+{
+    int index;
+    string name;
+    int price;
+};
+
+//
+// global variable
+//
+//Table tableInfo[MAX_NUM_OF_TABLE];
 
 //
 // global function
 //
+bool IsNumber(string);
 void Debug(string);
 void ToLower(string&);
+void ToUpper(string&);
 void ClearScreen();
 void PrintVersion(string);
+int CheckDateValidity(string);
+int CheckTimeValidity(string);
+int CheckAvailability(Reservation[], int, string, string);
+double CheckTimeDiff(string, string, string, string);
+string GetTime();
 
 #endif /* global_h */
