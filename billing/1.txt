@@ -1,2 +1,4 @@
 13 Baked_Tomato_Rice 44 Arrived
 04 Beef_Burger 52 Not_Yet
+Sum
+96
