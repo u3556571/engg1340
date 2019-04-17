@@ -323,6 +323,209 @@ void StaffMain()
     return;
 }
 
+
+
+//CustomerVersion
+void printfreetable(Table);
+void checkavailable(Table[],int);
+void checkavailable(Table[]);
+void printuserUI();
+void orderdishes(int,string);
+void lookmenu();
+void checkthebill(int);
+void go_on();
+
+void go_on()
+{
+  string nothing;
+  cout << "[Press enter to go on]" << endl;
+  cin.ignore();
+  cin.get();
+  ClearScreen();
+}
+
+void checkthebill(int tablenum)
+{
+  string filename= BILLING_FILE_DIRECTORY + to_string(tablenum) + ".txt";
+  ifstream fin;
+  string input;
+  int total=0;
+  fin.open(filename);
+  if (fin.fail())
+  {
+    cout << endl << "Error: Failed to open " + filename << endl;
+    exit(1);
+  }
+  while (fin>>input)
+  {
+    cout << input << " ";
+    fin >> input;
+    cout << input << " ";
+    fin >> input;
+    cout << input << " ";
+    total+=stoi(input);
+    fin >> input;
+    cout << input << " " << endl;
+  }
+  cout << endl << "Total : $" << total << endl;
+  go_on();
+  cout << endl << endl << endl << endl << endl;
+}
+
+void orderdishes(int tablenum,string addfood)
+{
+  string original[50];
+  string store;
+  int oldnum=0;
+  string filename= BILLING_FILE_DIRECTORY + to_string(tablenum) + ".txt";
+  ifstream fin;
+  //copy the original bill
+  fin.open(filename);
+  if (fin.fail())
+  {
+    cout << endl << "Error: Failed to open " + filename << endl;
+    exit(1);
+  }
+  while (getline(fin,store))
+  {
+    original[oldnum]=store;
+    oldnum++;
+  }
+  fin.close();
+  ofstream fout;
+  fout.open(filename);
+  for (int i=0;i<oldnum;i++)
+  {
+    fout << original[i] << endl;
+  }
+  oldnum=0;
+  // add the new food;
+  fout << addfood << " Not_Yet";
+  fout.close();
+}
+
+void lookmenu()
+{
+  ifstream menu;
+  string food;
+  menu.open(DISH_FILE_NAME);
+  while (getline(menu,food))
+  {
+    cout << food << endl;
+  }
+  menu.close();
+  cout << endl << "Order : 1 " << endl << "exit : 0" << endl;
+  int input,tablenum;
+  cin >> input;
+  if (input==1)
+  {
+    cout << "Please enter the table ID :";
+  }
+  cin >> tablenum ;
+  while (input != 0)
+  {
+    if (input==1)
+    {
+      cout << "please enter the Food ID (exit : 0) : ";
+      while (input!=0)
+      {
+        cin >> input;
+        if (input==0)
+          break;
+        menu.open(DISH_FILE_NAME);
+        for (int i=0;i<input;i++)
+        {
+          getline(menu,food);
+        }
+        menu.close();
+        cout << "Food is ordered, anything else? (exit : 0)" << endl;
+        orderdishes(tablenum,food);
+      }
+    }
+  }
+}
+
+void printuserUI(){
+  //ClearScreen();
+  cout << "Welcome!" << endl;
+  cout << "How can I help you?" << endl;
+  cout << "check current available table : 1" << endl;
+  cout << "Order dishes : 2" << endl; 
+  cout << "Check the bill : 3" << endl;
+  cout << "exit : 0" << endl;
+
+}
+
+void checkavailable(Table tableInfo[],int num_of_table)
+{
+  ClearScreen();
+  int total=0;
+  cout << "What is the size of the table?" << "(size : 1-8)" << endl;
+  int input;
+  cin >> input;
+  if (input<=2)
+    input=2;
+  else if (input <=4)
+    input=4;
+  else if (input <=8)
+    input=8;
+  for (int i=0;i<num_of_table;i++)
+  {
+    if ((tableInfo[i].occupancy=="Available")&&(tableInfo[i].size==input))
+      {
+        printfreetable(tableInfo[i]);
+        total++;
+      }
+  }
+  cout << "Total " << total << " of table is available" << endl << endl;
+  go_on();
+}
+
+void printfreetable(Table target)
+{
+  ClearScreen();
+  cout << "Table ID " << target.number << "(size " << target.size << ") is available";
+  cout << endl;
+}
+void CustomerVersion()
+{
+  //read in the table information
+  int tablenum;
+  Table tableInfo[MAX_NUM_OF_TABLE];
+  int num_of_table = 0;
+  num_of_table = ReadTableInfo(tableInfo);
+  printuserUI();
+  // user input
+  int input;
+  cin >> input;
+  ClearScreen();
+  while (input !=0)
+  {
+    //check free table
+    if (input==1)
+      checkavailable(tableInfo,num_of_table);
+    //check the current bill
+    if (input==2)
+    {
+      ClearScreen();
+      lookmenu();
+    }
+    if (input==3)
+    {
+      cout << "please enter the table ID :";
+      int tablenum;
+      cin >> tablenum;
+      checkthebill(tablenum);
+    }
+    cout << endl;
+    printuserUI();
+    cin >> input;
+  }
+  cout << endl << "Thank you for using";
+}
+
+
+
 int main()
 {
     /*Table tableInfo[MAX_NUM_OF_TABLE];
