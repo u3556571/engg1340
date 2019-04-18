@@ -446,14 +446,16 @@ void lookmenu()
 }
 
 void printuserUI(){
-  //ClearScreen();
-  cout << "Welcome!" << endl;
-  cout << "How can I help you?" << endl;
-  cout << "check current available table : 1" << endl;
-  cout << "Order dishes : 2" << endl; 
-  cout << "Check the bill : 3" << endl;
-  cout << "exit : 0" << endl;
-
+  ClearScreen();
+  PrintVersion("customer");
+  cout << "||" << setw((UI_WIDTH - 2)/2+3) << "Welcome!" << setw((UI_WIDTH - 2)/2-2) << "||" << endl ;
+  cout << "||" << setw((UI_WIDTH - 2)/2+9) << "How can I help you?" << setw((UI_WIDTH - 2)/2-8) << "||" << endl ;
+  cout << setfill('-') << setw(UI_WIDTH) << "-" << setfill(' ') << endl;
+  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"check current available table : 1" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Order dishes : 2" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Check the bill : 3" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"exit : 0" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+  cout << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl;
 }
 
 void checkavailable(Table tableInfo[],int num_of_table)
