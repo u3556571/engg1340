@@ -17,7 +17,9 @@ using namespace std;
 const int MAX_NUM_OF_TABLE = 50;
 const int MAX_NUM_OF_BILLING = 50;
 const int MAX_NUM_OF_RESERVATION = 50;
+const int MAX_NUM_OF_DISH = 50;
 const int UI_WIDTH = 49;
+const int COMMAND_BOX_WIDTH = 14;
 const string TABLE_INFO_FILE_NAME = "tableInfo.txt";
 const string BILLING_FILE_DIRECTORY = "billing/";
 const string RESERVATION_FILE_DIRECTORY = "reservation/";
@@ -60,6 +62,8 @@ struct Dish
 // global variable
 //
 //Table tableInfo[MAX_NUM_OF_TABLE];
+//Dish dishList[MAX_NUM_OF_DISH] = {};
+//int num_of_dish = 0;
 
 //
 // global function
@@ -70,6 +74,7 @@ void ToLower(string&);
 void ToUpper(string&);
 void ClearScreen();
 void PrintVersion(string);
+void PrintCommand(vector<vector<string>>);
 int CheckDateValidity(string);
 int CheckTimeValidity(string);
 int CheckAvailability(Reservation[], int, string, string);

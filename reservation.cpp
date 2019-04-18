@@ -9,20 +9,21 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <vector>
 
 #include "global.h"
 
 using namespace std;
 
 //
-// PrintReservationUI: print the user interface of the reservation status
+//  PrintReservationUI: print the user interface of the reservation status
 //
-// Input: Reservation reservationInfo[]: the array stored the reservation information
-//        int num_of_reservation: provided for the times of loop
+//  Input: Reservation reservationInfo[]: the array stored the reservation information
+//         int num_of_reservation: provided for the times of loop
 //
-// Output: cout: print the reservation user interface
+//  Output: cout: print the reservation user interface
 //
-// Required library: <iomanip>, "global.h": ClearScreen(), PrintVersion()
+//  Required library: <vector>, <iomanip>, "global.h": ClearScreen(), PrintVersion()
 //
 void PrintReservationUI(Reservation reservationInfo[], int num_of_reservation, int table_no, string feedback)
 {
@@ -58,22 +59,21 @@ void PrintReservationUI(Reservation reservationInfo[], int num_of_reservation, i
     << "|" << setw(UI_WIDTH - 1) << "|" << endl
     << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl;
     
+    
     //
     // print instructions
-    int command_width = 14;
-    cout
-    << endl << endl
-    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << "|" << setw(command_width) << "Command" << "  Description" << setw(21) << "|" << endl
-    << "|" << setfill('-') << setw(UI_WIDTH - 1) << "-|" << setfill(' ') << endl
+    // * Only edit the string inside the 2d vector
+    //
+    vector<vector<string>> command
+    {
+        {"Add", "Add a reservation"},
+        {"Delete", "Delete a reservation"},
+        {"", ""},
+        {"Return", "Return to the main page"}
+    };
+    PrintCommand(command);
     
-    << "|" << setw(command_width) << "Add" << "  Add a reservation" << setw(15) << "|" << endl
-    << "|" << setw(command_width) << "Delete" << "  Delete a reservation" << setw(12) << "|" << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << "|" << setw(command_width) << "Return" << "  Return to the main page" << setw(9) << "|" << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl << endl;
+    
     if (feedback != "") cout << " * " << feedback;
     cout << endl << " [ Type [command] to perform action ] " << endl << endl;
     
@@ -81,15 +81,15 @@ void PrintReservationUI(Reservation reservationInfo[], int num_of_reservation, i
 }
 
 //
-// ReadReservationTable: read the reservation status of the required table
+//  ReadReservationTable: read the reservation status of the required table
 //
-// Input: Reservation reservationInfo[]: the empty array of structure Reservation
-//        int table_no: the table number which the staff want to know the reservation status
+//  Input: Reservation reservationInfo[]: the empty array of structure Reservation
+//         int table_no: the table number which the staff want to know the reservation status
 //
-// Output: Reservation reservationInfo[]: the array that already stored the reservation status
-//         return int: the total number of reservation in the coming week
+//  Output: Reservation reservationInfo[]: the array that already stored the reservation status
+//          return int: the total number of reservation in the coming week
 //
-// Required library: <fstream>
+//  Required library: <fstream>
 //
 int ReadReservationTable(Reservation reservationInfo[], int table_no)
 {
@@ -117,16 +117,16 @@ int ReadReservationTable(Reservation reservationInfo[], int table_no)
 }
 
 //
-// InsertReservation: insert a reservation into the position provided
+//  InsertReservation: insert a reservation into the position provided
 //
-// Input: Reservation reservationInfo[]: stored all the reservation
-//        int num_of_reservation: the total number of reservation
-//        int position: the position which needed to insert a new reservation
-//        Reservation reservation_to_insert: the reservation needed to be inserted
+//  Input: Reservation reservationInfo[]: stored all the reservation
+//         int num_of_reservation: the total number of reservation
+//         int position: the position which needed to insert a new reservation
+//         Reservation reservation_to_insert: the reservation needed to be inserted
 //
-// Output: Reservation reservationInfo[]: stored new reservation (pass by array)
+//  Output: Reservation reservationInfo[]: stored new reservation (pass by array)
 //
-// Required Library: NONE
+//  Required Library: NONE
 //
 void InsertReservation(Reservation reservationInfo[], int num_of_reservation, int position, Reservation reservation_to_insert)
 {
@@ -143,14 +143,14 @@ void InsertReservation(Reservation reservationInfo[], int num_of_reservation, in
 }
 
 //
-// WriteReservationInfo: write the reservation information into the reservation_info_file
+//  WriteReservationInfo: write the reservation information into the reservation_info_file
 //
-// Input: Reservation reservationInfo[]: the array that stored the reservation information
-//        int num_of_reservation: the total number of reservation
+//  Input: Reservation reservationInfo[]: the array that stored the reservation information
+//         int num_of_reservation: the total number of reservation
 //
-// Output: ofstream fout: write the reservation information into the reservation_info_file
+//  Output: ofstream fout: write the reservation information into the reservation_info_file
 //
-// Required library: <fstream>, "global.h"
+//  Required library: <fstream>, "global.h"
 //
 void WriteReservationInfo(Reservation reservationInfo[], int num_of_reservation, int table_num)
 {
@@ -162,6 +162,7 @@ void WriteReservationInfo(Reservation reservationInfo[], int num_of_reservation,
     if (fout.fail())
     {
         cout << endl << "WriteReservationInfo: Error: Failed to open " + path << endl;
+        exit(1);
     }
     
     for (int i = 1; i <= num_of_reservation; i++)
@@ -300,7 +301,11 @@ void StaffReservation(int table_no, Table tableInfo[])
                     feedback = "\"Add\" is not performed due to wrong time.";
                 else if (flag_time == -3)
                     feedback = "\"Add\" is not performed due to wrong time interval.";
-                else cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckTimeValidity() returning value: " + to_string(flag_time) << endl;
+                else
+                {
+                    cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckTimeValidity() returning value: " + to_string(flag_time) << endl;
+                    exit(1);
+                }
             }
             else if (flag_date == -1)
                 feedback = "\"Add\" is not performed due to wrong format.";
@@ -308,7 +313,11 @@ void StaffReservation(int table_no, Table tableInfo[])
                 feedback = "\"Add\" is not performed due to wrong date.";
             else if (flag_date == -3)
                 feedback  = "\"Add\" is not performed due to out of range.";
-            else cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckDateValidity() returning value: " + to_string(flag_date) << endl;
+            else
+            {
+                cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckDateValidity() returning value: " + to_string(flag_date) << endl;
+                exit(1);
+            }
         }
         else if (command == "delete")
         {
@@ -373,7 +382,11 @@ void StaffReservation(int table_no, Table tableInfo[])
                         feedback = "\"Delete\" is not performed due to wrong time.";
                     else if (flag_time == -3)
                         feedback = "\"Delete\" is not performed due to wrong interval.";
-                    else cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckTimeValidity() returning value: " + to_string(flag_time) << endl;
+                    else
+                    {
+                        cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckTimeValidity() returning value: " + to_string(flag_time) << endl;
+                        exit(1);
+                    }
                 }
                 else
                     feedback = "\"Delete\" is not performed due to unmatching.";
@@ -382,7 +395,11 @@ void StaffReservation(int table_no, Table tableInfo[])
                 feedback = "\"Delete\" is not performed due to wrong format.";
             else if (flag_date == -2)
                 feedback = "\"Delete\" is not performed due to wrong date.";
-            else cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckDateValidity() returning value: " + to_string(flag_date) << endl;
+            else
+            {
+                cout << endl << "StaffReservation(): Error: Unknown exceptional case of CheckDateValidity() returning value: " + to_string(flag_date) << endl;
+                exit(1);
+            }
         }
         else
             feedback = "Wrong command. Please type again.";

@@ -1,6 +1,6 @@
-01 Beef_Burger 54
-02 Chicken_Burger 50
-03 Fish_&_Chips 60
-04 Fried_Rice 45
-05 Chicken_Wings 28
-06 Ice_Cream 8
+1 Beef_Burger 54
+2 Chicken_Burger 50
+3 Fish_&_Chips 60
+4 Fried_Rice 45
+5 Chicken_Wings 28
+6 Ice_Cream 8

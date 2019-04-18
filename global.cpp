@@ -8,19 +8,20 @@
 
 #include <iostream>
 #include <iomanip>
+#include <vector>
 
 #include "global.h"
 
 using namespace std;
 
 //
-// Debug: print debug message in a faster way
+//  Debug: print debug message in a faster way
 //
-// Input: string msg: the message which need to print
+//  Input: string msg: the message which need to print
 //
-// Output: cout: the debug message
+//  Output: cout: the debug message
 //
-// Required library: NONE
+//  Required library: NONE
 //
 void Debug(string msg)
 {
@@ -30,13 +31,13 @@ void Debug(string msg)
 }
 
 //
-// ToLower: convert whole c++ string into lower case
+//  ToLower: convert whole c++ string into lower case
 //
-// Input: string string_: the string that needs to change into lower case
+//  Input: string string_: the string that needs to change into lower case
 //
-// Output: string string_: the string that already converted into lower case (pass-by-reference)
+//  Output: string string_: the string that already converted into lower case (pass-by-reference)
 //
-// Required library: NONE
+//  Required library: NONE
 //
 void ToLower(string &string_)
 {
@@ -47,13 +48,13 @@ void ToLower(string &string_)
 }
 
 //
-// ToUpper: convert whole c++ string into upper case
+//  ToUpper: convert whole c++ string into upper case
 //
-// Input: string string_: the string that needs to change into upper case
+//  Input: string string_: the string that needs to change into upper case
 //
-// Output: string string_: the string that already converted into upper case (pass-by-reference)
+//  Output: string string_: the string that already converted into upper case (pass-by-reference)
 //
-// Required library: NONE
+//  Required library: NONE
 //
 void ToUpper(string &string_)
 {
@@ -64,14 +65,14 @@ void ToUpper(string &string_)
 }
 
 //
-// IsNumber: check whether the string is all number or not
+//  IsNumber: check whether the string is all number or not
 //
-// Input: string string_: the string which needed to check
+//  Input: string string_: the string which needed to check
 //
-// Output: return bool: true if the string is all number
-//                      false if the string is not all number
+//  Output: return bool: true if the string is all number
+//                       false if the string is not all number
 //
-// Required library: NONE
+//  Required library: NONE
 //
 bool IsNumber(string string_)
 {
@@ -83,13 +84,13 @@ bool IsNumber(string string_)
 }
 
 //
-// ClearScreen: clear the screen by printing 50 empty lines
+//  ClearScreen: clear the screen by printing 50 empty lines
 //
-// Input: NONE
+//  Input: NONE
 //
-// Output: cout: 50 empty lines
+//  Output: cout: 50 empty lines
 //
-// Required library: NONE
+//  Required library: NONE
 //
 void ClearScreen()
 {
@@ -100,13 +101,13 @@ void ClearScreen()
 }
 
 //
-// PrintVersion: print the version of this system for the user interface
+//  PrintVersion: print the version of this system for the user interface
 //
-// Input: string version: "staff" or "customer"
+//  Input: string version: "staff" or "customer"
 //
-// Output: cout: print the user interface
+//  Output: cout: print the user interface
 //
-// Required library: <iomanip>
+//  Required library: <iomanip>
 //
 void PrintVersion(string version)
 {
@@ -120,7 +121,11 @@ void PrintVersion(string version)
         cout << "||" << setw(staff_width) << "Table Management System (Staff)" << setw(UI_WIDTH - staff_width - 2) << "||" << endl;
     else if (version == "customer")
         cout << "||" << setw(UI_WIDTH - customer_width - 2) << "Table Management System (Customer)" << setw(customer_width) << "||" << endl;
-    else cout << endl << "PrintVersion(): Error: Unknown exceptional case of input string \"version\": " + version << endl;
+    else
+    {
+        cout << endl << "PrintVersion(): Error: Unknown exceptional case of input string \"version\": " + version << endl;
+        exit(1);
+    }
     
     cout
     << "||" << setw(UI_WIDTH - 2) << "||" << endl
@@ -128,16 +133,48 @@ void PrintVersion(string version)
 }
 
 //
-// CheckDateValidity: check whether the date string is valid or not
+//  PrintCommand: print the command box for the user interface
 //
-// Input: string date: stored the date of the reservation
+//  Input: vector<vector<string>> command: the 2d vector for storing the string
 //
-// Output: return int: 1 if the date is within one week since today
-//                     -1 if the format is wrong
-//                     -2 if the date is invalid
-//                     -3 if the date is not within one week since today
+//  Output: cout: the command box for the user interface
 //
-// Required library: NONE
+//  Required library: <iomanip>, <vector>
+//
+void PrintCommand(vector<vector<string>> command)
+{
+    cout
+    << endl
+    << endl
+    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl
+    << "|" << setw(UI_WIDTH - 1) << "|" << endl
+    << "|" << setw(COMMAND_BOX_WIDTH) << "Command" << "  " << left << setw(UI_WIDTH - COMMAND_BOX_WIDTH - 4) << "Description" << right << "|" << endl
+    << "|" << setfill('-') << setw(UI_WIDTH - 1) << "-|" << setfill(' ') << endl;
+    
+    for (int i = 0; i < command.size(); i++)
+    {
+        cout << "|" << setw(COMMAND_BOX_WIDTH) << command[i][0] << "  " << left << setw(UI_WIDTH - COMMAND_BOX_WIDTH - 4) << command[i][1] << right << "|" << endl;
+    }
+    
+    cout
+    << "|" << setw(UI_WIDTH - 1) << "|" << endl
+    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl
+    << endl;
+    
+    return;
+}
+
+//
+//  CheckDateValidity: check whether the date string is valid or not
+//
+//  Input: string date: stored the date of the reservation
+//
+//  Output: return int: 1 if the date is within one week since today
+//                      -1 if the format is wrong
+//                      -2 if the date is invalid
+//                      -3 if the date is not within one week since today
+//
+//  Required library: NONE
 //
 // *** Citation: This method is cited from http://www.cplusplus.com/reference/ctime/
 //
@@ -191,16 +228,16 @@ int CheckDateValidity(string date)
 //
 // *** to-do: add if-function to check whether the time is within the opening hour or not
 //
-// CheckTimeValidity: check whether the time string is valid or not
+//  CheckTimeValidity: check whether the time string is valid or not
 //
-// Input: string time: stored the time of the reservation
+//  Input: string time: stored the time of the reservation
 //
-// Output: return int: 1 if the time is in half an hour interval
-//                     -1 if the format is wrong
-//                     -2 if the time is wrong
-//                     -3 if the time is not in half an hour interval
+//  Output: return int: 1 if the time is in half an hour interval
+//                      -1 if the format is wrong
+//                      -2 if the time is wrong
+//                      -3 if the time is not in half an hour interval
 //
-// Required library: NONE
+//  Required library: NONE
 //
 int CheckTimeValidity(string time)
 {
@@ -230,16 +267,16 @@ int CheckTimeValidity(string time)
 }
 
 //
-// CheckTimeDiff: check the difference between the two provided time
+//  CheckTimeDiff: check the difference between the two provided time
 //
-// Input: string date_1: the first date string
-//        string time_1: the first time string
-//        string date_2: the second date string
-//        string time_2: the second time string
+//  Input: string date_1: the first date string
+//         string time_1: the first time string
+//         string date_2: the second date string
+//         string time_2: the second time string
 //
-// Output: return diff: the difference between the two provided time
+//  Output: return diff: the difference between the two provided time
 //
-// Required library: NONE
+//  Required library: NONE
 //
 // *** Citation: This method is cited from http://www.cplusplus.com/reference/ctime/
 //
@@ -277,17 +314,17 @@ double CheckTimeDiff(string date_1, string time_1, string date_2, string time_2)
 }
 
 //
-// CheckAvailability: check whether the date and time of the reservation is valid or not
+//  CheckAvailability: check whether the date and time of the reservation is valid or not
 //
-// Input: Reservation reservationInfo[]: stored the reservation information
-//        int num_of_reservation: the total number of reservation
-//        string date: stored the date of the reservation
-//        string time: stored the time of the reservation
+//  Input: Reservation reservationInfo[]: stored the reservation information
+//         int num_of_reservation: the total number of reservation
+//         string date: stored the date of the reservation
+//         string time: stored the time of the reservation
 //
-// Output: return int: -1 if the date and time of the reservation is not available
-//                     i (the position in the array) if the date and time of the reservation is available
+//  Output: return int: -1 if the date and time of the reservation is not available
+//                      i (the position in the array) if the date and time of the reservation is available
 //
-// Required library: <ctime>
+//  Required library: <ctime>
 //
 int CheckAvailability(Reservation reservationInfo[], int num_of_reservation, string date, string reservation_time)
 {
@@ -312,13 +349,13 @@ int CheckAvailability(Reservation reservationInfo[], int num_of_reservation, str
 }
 
 //
-// GetTime: return full details of the current date and time
+//  GetTime: return full details of the current date and time
 //
-// Input: NONE
+//  Input: NONE
 //
-// Output: return string: return the current date and time in string form
+//  Output: return string: return the current date and time in string form
 //
-// Required library: <ctime>
+//  Required library: <ctime>
 //
 // *** Citation: This method is cited from http://www.cplusplus.com/reference/ctime/ctime/
 //

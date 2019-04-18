@@ -9,5 +9,14 @@
 #ifndef billing_h
 #define billing_h
 
+void PrintBillingUI(Billing[], int, int, string);
+int ReadBillingInfo(Billing[], int);
+void WriteBillingInfo(Billing[], int, int);
+int ReadDishList(Dish[]);
+void AddBill(Billing[], Dish[], int, int&);
+void DeleteBill(Billing[], int, int&);
+int CheckArrivalFromStart(int, Billing[], int);
+int CheckArrivalFromEnd(int, Billing[], int);
+void StaffBilling(Table[], int);
 
 #endif /* billing_h */

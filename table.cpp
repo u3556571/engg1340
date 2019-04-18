@@ -9,20 +9,21 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <vector>
 
 #include "global.h"
 
 using namespace std;
 
 //
-// PrintTableUI: print the user interface of the current table status
+//  PrintTableUI: print the user interface of the current table status
 //
-// Input: Table tableInfo[]: the array of structure Table which already read the information
-//        int num_of_table: the total number of table the restaurant has
+//  Input: Table tableInfo[]: the array of structure Table which already read the information
+//         int num_of_table: the total number of table the restaurant has
 //
-// Output: cout: the user interface
+//  Output: cout: the user interface
 //
-// Required library: <iomanip>, "global.h": ClearScreen(), PrintVersion()
+//  Required library: <iomanip>, <vector>, "global.h": ClearScreen(), PrintVersion()
 //
 void PrintTableUI(Table tableInfo[], int num_of_table, string feedback)
 {
@@ -39,7 +40,7 @@ void PrintTableUI(Table tableInfo[], int num_of_table, string feedback)
     //
     // print header
     cout
-    << setw(7) << "| Number" << setw(6) << "Size" << setw(12) << "Occupancy" << setw(12) << "Start_From" << setw(11) << "Billing |" << endl
+    << "|" << setw(7) << "Number" << setw(6) << "Size" << setw(12) << "Occupancy" << setw(12) << "Start_From" << setw(9) << "Billing" << " |" << endl
     << "|" << setfill('-') << setw(UI_WIDTH - 1) << "-|" << setfill(' ') << endl;
     
     //
@@ -52,22 +53,19 @@ void PrintTableUI(Table tableInfo[], int num_of_table, string feedback)
     
     //
     // print instructions
-    int command_width = 14;
-    cout
-    << endl << endl
-    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << "|" << setw(command_width) << "Command" << "  Description" << setw(21) << "|" << endl
-    << "|" << setfill('-') << setw(UI_WIDTH - 1) << "-|" << setfill(' ') << endl
+    // * Only edit the string inside the 2d vector
+    vector<vector<string>> command
+    {
+        {"Occupy", "Change occupancy to occupied"},
+        {"Free", "Change occupancy to available"},
+        {"Paid", "Change billing to paid"},
+        {"", ""},
+        {"Billing", "Check the billing detail"},
+        {"Reservation", "Check the reservation status"}
+        
+    };
+    PrintCommand(command);
     
-    << "|" << setw(command_width) << "Occupy" << "  Change occupancy to occupied" << setw(4) << "|" << endl
-    << "|" << setw(command_width) << "Free" << "  Change occupancy to available" << setw(3) << "|" << endl
-    << "|" << setw(command_width) << "Paid" << "  Change billing to paid" << setw(10) << "|" << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << "|" << setw(command_width) << "Billing" << "  Check the billing detail" << setw(8) << "|" << endl
-    << "|" << setw(command_width) << "Reservation" << "  Check the reservation status" << setw(4) << "|" << endl
-    << "|" << setw(UI_WIDTH - 1) << "|" << endl
-    << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl << endl;
     if (feedback != "") cout << " * " << feedback;
     cout << endl << " [ Type [command] [table_num] to perform action ] " << endl << endl;
     
@@ -75,14 +73,14 @@ void PrintTableUI(Table tableInfo[], int num_of_table, string feedback)
 }
 
 //
-// ReadTableInfo: read the table information text file
+//  ReadTableInfo: read the table information text file
 //
-// Input: Table tableInfo[]: the empty array of structure Table
+//  Input: Table tableInfo[]: the empty array of structure Table
 //
-// Output: Table tableInfo[]: the array of structure Table which already read the information
-//         return int: the total number of table the restaurant has
+//  Output: Table tableInfo[]: the array of structure Table which already read the information
+//          return int: the total number of table the restaurant has
 //
-// Required library: <fstream>
+//  Required library: <fstream>
 //
 int ReadTableInfo(Table tableInfo[])
 {
@@ -112,14 +110,14 @@ int ReadTableInfo(Table tableInfo[])
 }
 
 //
-// WriteTableInfo: write the table information into the table_info_file
+//  WriteTableInfo: write the table information into the table_info_file
 //
-// Input: Table tableInfo[]: the array that stored the table information
-//        int num_of_table: the total number of table
+//  Input: Table tableInfo[]: the array that stored the table information
+//         int num_of_table: the total number of table
 //
-// Output: ofstream fout: write the table information into the table_info_file
+//  Output: ofstream fout: write the table information into the table_info_file
 //
-// Required library: <fstream>
+//  Required library: <fstream>
 //
 void WriteTableInfo(Table tableInfo[], int num_of_table)
 {
@@ -139,15 +137,15 @@ void WriteTableInfo(Table tableInfo[], int num_of_table)
 }
 
 //
-// Occupy: change the occupancy of the target table to occupied
+//  Occupy: change the occupancy of the target table to occupied
 //
-// Input: Table tableInfo[]: the array that stored all table information
-//        int table_no: the target table number
+//  Input: Table tableInfo[]: the array that stored all table information
+//         int table_no: the target table number
 //
-// Output: ofstream: write into the table_info_file
-//         return string: the feedback to print on screen
+//  Output: ofstream: write into the table_info_file
+//          return string: the feedback to print on screen
 //
-// Required library: "global.h": GetTime()
+//  Required library: "global.h": GetTime()
 //
 string Occupy(Table tableInfo[], int table_no, int num_of_table)
 {
@@ -170,16 +168,16 @@ string Occupy(Table tableInfo[], int table_no, int num_of_table)
 }
 
 //
-// Free: change the occupancy of the target table to available
+//  Free: change the occupancy of the target table to available
 //
-// Input: Table tableInfo[]: the array that stored all table information
-//        int table_no: the target table number
-//        int num_of_table: the total number of table
+//  Input: Table tableInfo[]: the array that stored all table information
+//         int table_no: the target table number
+//         int num_of_table: the total number of table
 //
-// Output: ofstream: write into the table_info_file
-//         return string: the feedback to print on screen
+//  Output: ofstream: write into the table_info_file
+//          return string: the feedback to print on screen
 //
-// Required library: "global.h": ToLower()
+//  Required library: "global.h": ToLower()
 //
 string Free(Table tableInfo[], int table_no, int num_of_table)
 {
@@ -221,16 +219,16 @@ string Free(Table tableInfo[], int table_no, int num_of_table)
 }
 
 //
-// Paid: change the billing status of the target table to paid
+//  Paid: change the billing status of the target table to paid
 //
-// Input: Table tableInfo[]: the array that stored all table information
-//        int table_no: the target table number
-//        int num_of_table: the total number of table
+//  Input: Table tableInfo[]: the array that stored all table information
+//         int table_no: the target table number
+//         int num_of_table: the total number of table
 //
-// Output: ofstream: write into the table_info_file
-//         return string: the feedback to print on screen
+//  Output: ofstream: write into the table_info_file
+//          return string: the feedback to print on screen
 //
-// Required library: NONE
+//  Required library: NONE
 //
 string Paid(Table tableInfo[], int table_no, int num_of_table)
 {
@@ -250,7 +248,11 @@ string Paid(Table tableInfo[], int table_no, int num_of_table)
         WriteTableInfo(tableInfo, num_of_table);
         feedback = "\"Paid " + to_string(table_no) + "\" is performed.";
     }
-    else cout << endl << "Paid(): Error: Unknown exceptional case of struct \"Table\" member \"billing_status\": " + tableInfo[table_no].billing_status << endl;
+    else
+    {
+        cout << endl << "Paid(): Error: Unknown exceptional case of struct \"Table\" member \"billing_status\": " + tableInfo[table_no].billing_status << endl;
+        exit(1);
+    }
     
     return feedback;
 }

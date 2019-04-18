@@ -1,2 +1,4 @@
-13 Baked_Tomato_Rice 44 Arrived
-04 Beef_Burger 52 Not_Yet
+2 Chicken_Burger 50 Arrived
+3 Fish_&_Chips 60 Arrived
+6 Ice_Cream 8 Not_Yet
+1 Beef_Burger 54 Not_Yet
