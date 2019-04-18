@@ -334,6 +334,12 @@ void orderdishes(int,string);
 void lookmenu();
 void checkthebill(int);
 void go_on();
+void printline(char);
+
+void printline(char x)
+{
+  cout << setfill(x) << setw(UI_WIDTH) << x << setfill(' ') << endl;
+}
 
 void go_on()
 {
@@ -346,6 +352,7 @@ void go_on()
 
 void checkthebill(int tablenum)
 {
+  ClearScreen();
   string filename= BILLING_FILE_DIRECTORY + to_string(tablenum) + ".txt";
   ifstream fin;
   string input;
@@ -356,17 +363,29 @@ void checkthebill(int tablenum)
     cout << endl << "Error: Failed to open " + filename << endl;
     exit(1);
   }
+  printline('=');
+  cout << "||" << setw((UI_WIDTH - 2)/2+6) << "Bill Checking" << setw((UI_WIDTH - 2)/2-5) << "||" << endl ;
+  cout << "||" << setw((UI_WIDTH - 2)/2+2) << "Table " << tablenum << setw((UI_WIDTH - 2)/2-2) << "||" << endl ;
+  printline('-');
+
+  cout << "|" << setw((UI_WIDTH - 1)/4-8) << "ID";
+  cout << setw((UI_WIDTH - 1)/2-7) << "Dish_Name" << setw((UI_WIDTH - 1)/3+2);
+  cout << setw((UI_WIDTH - 1)/2-13) << "Price" << setw((UI_WIDTH - 1)/3+2);
+  cout << setw((UI_WIDTH - 1)/4+2) << "Arrrival" << setw(2) << "|" << endl ;
+  printline('-');
+
   while (fin>>input)
   {
-    cout << input << " ";
+    cout << "|" << setw((UI_WIDTH - 1)/4-8) << input;
     fin >> input;
-    cout << input << " ";
+    cout << setw((UI_WIDTH - 1)/2-4) << input << setw((UI_WIDTH - 1)/3+3);
     fin >> input;
-    cout << input << " ";
     total+=stoi(input);
+    cout << setw((UI_WIDTH - 1)/4-5) << input;
     fin >> input;
-    cout << input << " " << endl;
+    cout << setw((UI_WIDTH - 1)/4+3) << input << setw(2) << "|" << endl ;
   }
+  printline('=');
   cout << endl << "Total : $" << total << endl;
   go_on();
   cout << endl << endl << endl << endl << endl;
@@ -409,19 +428,33 @@ void lookmenu()
   ifstream menu;
   string food;
   menu.open(DISH_FILE_NAME);
-  while (getline(menu,food))
+  printline('=');
+  cout << "||" << setw((UI_WIDTH - 2)/2+1) << "MENU" << setw((UI_WIDTH - 2)/2) << "||" << endl ;
+  printline('-');
+  cout << "|" << setw((UI_WIDTH - 1)/4-4) << "ID";
+  cout << setw((UI_WIDTH - 1)/2-4) << "Dish_Name" << setw((UI_WIDTH - 1)/3+2);
+  cout << setw((UI_WIDTH - 1)/4+3) << "Price" << setw(5) << "|" << endl ;
+  printline('-');
+  while (menu >> food)
   {
-    cout << food << endl;
+    cout << "|" << setw((UI_WIDTH - 1)/4-5) << food << " : ";
+    menu >> food;
+    cout << setw((UI_WIDTH - 1)/2-5) << food << setw((UI_WIDTH - 1)/3);
+    menu >> food;
+    cout << setw((UI_WIDTH - 1)/4) << food << setw(7) << "|" << endl ;
   }
   menu.close();
-  cout << endl << "Order : 1 " << endl << "exit : 0" << endl;
+  printline('-');
+  cout << "||" << setw((UI_WIDTH - 2)/2+9) << "Order : 1   exit : 0" << setw((UI_WIDTH - 2)/2-8) << "||" << endl ;
+  printline('=');
+  cout << "Please enter your choice : ";
   int input,tablenum;
   cin >> input;
   if (input==1)
   {
+    cin >> tablenum ;
     cout << "Please enter the table ID :";
   }
-  cin >> tablenum ;
   while (input != 0)
   {
     if (input==1)
@@ -450,12 +483,13 @@ void printuserUI(){
   PrintVersion("customer");
   cout << "||" << setw((UI_WIDTH - 2)/2+3) << "Welcome!" << setw((UI_WIDTH - 2)/2-2) << "||" << endl ;
   cout << "||" << setw((UI_WIDTH - 2)/2+9) << "How can I help you?" << setw((UI_WIDTH - 2)/2-8) << "||" << endl ;
-  cout << setfill('-') << setw(UI_WIDTH) << "-" << setfill(' ') << endl;
+  printline('-');
   cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"check current available table : 1" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
-  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Order dishes : 2" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+  cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Read menu : 2" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
   cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Check the bill : 3" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
   cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"exit : 0" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
-  cout << setfill('=') << setw(UI_WIDTH) << "=" << setfill(' ') << endl;
+  printline('=');
+
 }
 
 void checkavailable(Table tableInfo[],int num_of_table)
@@ -479,7 +513,10 @@ void checkavailable(Table tableInfo[],int num_of_table)
         total++;
       }
   }
-  cout << "Total " << total << " of table is available" << endl << endl;
+  if (total > 1)
+    cout << "Total " << total << " tables are available" << endl << endl;
+  else
+    cout << "Total " << total << " table is available" << endl << endl;
   go_on();
 }
 
@@ -514,17 +551,20 @@ void CustomerVersion()
     }
     if (input==3)
     {
-      cout << "please enter the table ID :";
+      cout << "please enter the table ID (exit : 0):";
       int tablenum;
       cin >> tablenum;
-      checkthebill(tablenum);
+      if (tablenum!=0)
+        checkthebill(tablenum);
     }
     cout << endl;
     printuserUI();
     cin >> input;
   }
+  ClearScreen();
   cout << endl << "Thank you for using";
 }
+
 
 
 
