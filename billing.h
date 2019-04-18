@@ -9,6 +9,8 @@
 #ifndef billing_h
 #define billing_h
 
+using namespace std;
+
 void PrintBillingUI(Billing[], int, int, string);
 int ReadBillingInfo(Billing[], int);
 void WriteBillingInfo(Billing[], int, int);

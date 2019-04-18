@@ -9,6 +9,8 @@
 #ifndef reservation_h
 #define reservation_h
 
+using namespace std;
+
 void PrintReservationUI(Reservation[], int, int, string);
 int ReadReservationTable(Reservation[], int);
 void InsertReservation(Reservation[], int, int, Reservation);

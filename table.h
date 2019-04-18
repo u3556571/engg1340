@@ -9,6 +9,8 @@
 #ifndef table_h
 #define table_h
 
+using namespace std;
+
 void PrintTableUI(Table[], int, string);
 int ReadTableInfo(Table[]);
 void WriteTableInfo(Table[], int);
