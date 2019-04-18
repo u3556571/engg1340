@@ -311,9 +311,9 @@ void CustomerVersion()
 
 int main()
 {
-    //StaffMain();
+    StaffMain();
     
-    CustomerVersion();
+    //CustomerVersion();
     
     return 0;
 }

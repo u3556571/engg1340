@@ -20,10 +20,10 @@ const int MAX_NUM_OF_RESERVATION = 50;
 const int MAX_NUM_OF_DISH = 50;
 const int UI_WIDTH = 49;
 const int COMMAND_BOX_WIDTH = 14;
-const string TABLE_INFO_FILE_NAME = "tableInfo.txt";
-const string BILLING_FILE_DIRECTORY = "billing/";
-const string RESERVATION_FILE_DIRECTORY = "reservation/";
-const string DISH_FILE_NAME = "dishList.txt"; 
+const string TABLE_INFO_FILE_NAME = "data/tableInfo.txt";
+const string BILLING_FILE_DIRECTORY = "data/billing/";
+const string RESERVATION_FILE_DIRECTORY = "data/reservation/";
+const string DISH_FILE_NAME = "data/dishList.txt"; 
 
 //
 // global structure
