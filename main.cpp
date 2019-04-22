@@ -70,6 +70,7 @@ void StaffMain()
 }
 
 //CustomerVersion
+void addreservation(int,Table[]);
 void printfreetable(Table);
 void checkavailable(Table[],int);
 void checkavailable(Table[]);
@@ -196,8 +197,8 @@ void lookmenu()
     cin >> input;
     if (input==1)
     {
-        cin >> tablenum ;
         cout << "Please enter the table ID :";
+        cin >> tablenum ;
     }
     while (input != 0)
     {
@@ -231,6 +232,7 @@ void printuserUI(){
     cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"check current available table : 1" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
     cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Read menu : 2" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
     cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Check the bill : 3" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
+    cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"Reserve table : 4" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
     cout << "|" << setw((UI_WIDTH - 1)/2+13) <<"exit : 0" << setw((UI_WIDTH - 1)/2-13) << "|" << endl;
     printline('=');
     
@@ -301,12 +303,109 @@ void CustomerVersion()
             if (tablenum!=0)
                 checkthebill(tablenum);
         }
+        if (input==4)
+        {
+          addreservation(num_of_table,tableInfo);
+        }
         cout << endl;
         printuserUI();
         cin >> input;
     }
     ClearScreen();
-    cout << endl << "Thank you for using";
+    cout << endl << "Thank you for using." << endl;
+}
+
+void addreservation(int numtable, Table tableInfo[])
+{
+  Reservation reservationInfo[MAX_NUM_OF_RESERVATION];
+  int num_of_reservation = 0;
+  string date;
+  cout << "Please enter the date(exit : 0) : " << endl
+  << " [ In form of [DD/MM/YYYY] ]" << endl;
+  cin >> date;      
+  //
+  // check if the date is valid
+  int flag_date;
+  flag_date = CheckDateValidity(date);
+  while (flag_date != 1 && date != "0")
+  {
+    cout << "Wrong date, please enter again(exit : 0) : ";
+    cin >> date;
+    if (date=="0")
+      break;
+    flag_date = CheckDateValidity(date);
+  }
+  if (flag_date == 1)
+  {
+    cout << "Please enter the number of people(1-8)(exit : 0) :   ";
+    int num0,num1;
+    cin >> num0;
+    //find the suitable size of table(num1)
+    if (num0<=2)
+       num1=2;
+    else if (num0 <=4)
+       num1=4;
+    else if (num0 <=8)
+       num1=8;
+    if (num0!=0)
+    {
+      cout << endl << "Please enter the time(exit : 0) : " << endl << " [ In form of [HH:MM] ]" << endl;
+      string time;
+      cin >> time;
+      if (time != "0")
+      {
+        int success=0;
+        for (int i=1;i<numtable+1;i++)
+        {
+          if (tableInfo[i].size == num1)
+          {            
+            num_of_reservation = ReadReservationTable(reservationInfo, i);
+            int position;
+            position = CheckAvailability(reservationInfo, num_of_reservation, date, time);
+            string surname, phone_num;
+            if (position > 0)
+            {
+              cout << endl << "Please enter the surname and phone_num of reserver(exit : 0) :" << endl << " [ In form of [surname] [phone_num] ]" << endl << endl;
+              cin >> surname;
+              if (surname!="0")
+              {
+                cin >> phone_num;
+                ToUpper(surname);
+                while (IsNumber(phone_num)==0 || phone_num.length() != 8)
+                {                    
+                  cout << endl << " * Error * "<< endl << "Please enter the surname and phone_num of reserver:(exit : 0) " << endl << " [ In form of [surname] [phone_num] ]" << endl << endl;
+                  cin >> surname;
+                  if (surname=="0")
+                    break;
+                  cin >> phone_num;
+                  ToUpper(surname);
+                }
+                Reservation reservation_to_insert;
+                reservation_to_insert.date = date;
+                reservation_to_insert.time = time;
+                reservation_to_insert.surname = surname;
+                reservation_to_insert.num_of_people = num0;
+                reservation_to_insert.phone_no = phone_num;          
+                InsertReservation(reservationInfo, num_of_reservation, position, reservation_to_insert);
+                num_of_reservation++;                
+                WriteReservationInfo(reservationInfo, num_of_reservation, i);
+                cout << "Table(ID : " << i << ") on " << date << " at " << time << " is reserved successfully" << endl;
+                cout << "Surname : " << surname << "    Number of people : " << num0 << endl;
+                success = 1;
+                go_on(); 
+                break;
+              }
+            }
+          } 
+        }
+        if (success == 0)
+        {
+          cout << "Sorry, no available table." << endl;
+          go_on();
+        }
+      }   
+    }      
+  }    
 }
 
 int main()
