@@ -205,6 +205,7 @@ void removereservation(int numtable, Table tableInfo[])
   if (surname!="0")
   {
     cin >> phone_num;
+    ToUpper(surname);
   }
   int success=0;
   if (surname!="0")
@@ -226,7 +227,7 @@ void removereservation(int numtable, Table tableInfo[])
       {
         Delete(reservationInfo, num_of_reservation, position);
         WriteReservationInfo(reservationInfo, num_of_reservation, i);
-        cout << "Reservation on" << date << " is canceled successfully" << endl;
+        cout << "Reservation on " << date << " is canceled successfully" << endl;
         cout << "Surname : " << surname << "    Phone number : " << phone_num << endl;
         go_on();
       }
