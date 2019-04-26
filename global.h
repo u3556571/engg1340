@@ -8,7 +8,7 @@
 
 #ifndef global_h
 #define global_h
-
+#include<vector>
 using namespace std;
 
 //
