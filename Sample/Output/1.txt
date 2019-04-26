@@ -1,0 +1,67 @@
+Staffmode : 1       Customermode : 2
+
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+What is the size of the table?(size : 1-8)
+
+
+
+
+
+Table ID 2(size 4) is available
+Total 1 table is available
+
+[Press enter to go on]
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+
+
+
+
+Thank you for using.
