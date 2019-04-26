@@ -24,12 +24,11 @@ In this project, we manage to build a system including the function below :
   
 **The customers can:**  
   
-1. Request a table for now or to wait in the queue if there is no empty table at the time.
-2. Check what is their position in the waiting queue, and the estimated time for them to get a table.
-3. Check what food they have ordered and the corresponding arrival status.
-4. Check how much they need to pay for the bill.
-6. Reserve tables in the coming week providing their surname, time, number of people, and their phone number.
-7. Cancel the reservation by providing the reservation time and their phone number. 
+1. Check if there is table available.
+2. Check what food they have ordered and the corresponding arrival status.
+3. Check how much they need to pay for the bill.
+4. Reserve tables in the coming week providing their surname, time and their phone number.
+5. Cancel the reservation by providing the reservation date, surname and their phone number. 
 
 **The system will:**  
   
