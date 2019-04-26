@@ -1,0 +1,131 @@
+Staffmode : 1       Customermode : 2
+
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+
+=================================================
+||                    MENU                     ||
+-------------------------------------------------
+|      ID           Dish_Name          Price    |
+-------------------------------------------------
+|      1 :         Beef_Burger          54      |
+|      2 :      Chicken_Burger          50      |
+|      3 :        Fish_&_Chips          60      |
+|      4 :          Fried_Rice          45      |
+|      5 :       Chicken_Wings          28      |
+|      6 :           Ice_Cream           8      |
+-------------------------------------------------
+||            Order : 1   exit : 0             ||
+=================================================
+Please enter your choice :
+
+
+
+
+
+Please enter the table ID :
+
+
+
+
+
+please enter the Food ID (exit : 0) :
+
+
+
+
+
+Food is ordered, anything else? (exit : 0)
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+
+please enter the table ID (exit : 0):
+
+
+
+
+=================================================
+||                Bill Checking                ||
+||                   Table 1                   ||
+-------------------------------------------------
+|  ID        Dish_Name      Price      Arrrival |
+-------------------------------------------------
+|   2      Chicken_Burger     50        Arrived |
+|   3        Fish_&_Chips     60        Arrived |
+|   6           Ice_Cream      8        Not_Yet |
+|   1         Beef_Burger     54        Not_Yet |
+|   6           Ice_Cream      8        Not_Yet |
+=================================================
+
+Total : $180
+[Press enter to go on]
+
+
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+
+Thank you for using.
+
