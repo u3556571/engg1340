@@ -1,0 +1,113 @@
+Staffmode : 1       Customermode : 2
+
+
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+Please enter the date(exit : 0) :
+ [ In form of [DD/MM/YYYY] ]
+ 
+ 
+ 
+ 
+ Wrong date, please enter again(exit : 0) :
+ 
+ 
+ 
+ Please enter the date(exit : 0) :
+ [ In form of [DD/MM/YYYY] ]
+
+Wrong date, please enter again(exit : 0) :
+
+
+
+Please enter the number of people(1-8)(exit : 0) :
+
+
+Please enter the time(exit : 0) :
+ [ In form of [HH:MM] ]
+
+
+
+
+Please enter the surname and phone_num of reserver(exit : 0) :
+ [ In form of [surname] [phone_num] ]
+
+
+
+Table(ID : 4) on 30/04/2019 at 15:30 is reserved successfully
+Surname : CHEUNG    Number of people : 8
+[Press enter to go on]
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+Please enter the date(exit : 0) :
+ [ In form of [DD/MM/YYYY] ]
+
+
+Please enter the surname and phone_num of reserver(exit : 0) :
+ [ In form of [surname] [phone_num] ]
+
+
+Reservation on 30/04/2019 is canceled successfully
+Surname : CHEUNG    Phone number : 12345678
+[Press enter to go on]
+
+
+
+=================================================
+||                                             ||
+||      Table Management System (Customer)     ||
+||                                             ||
+=================================================
+||                  Welcome!                   ||
+||             How can I help you?             ||
+-------------------------------------------------
+|    check current available table : 1          |
+|                        Read menu : 2          |
+|                   Check the bill : 3          |
+|                    Reserve table : 4          |
+|               Cancel reservation : 5          |
+|                             exit : 0          |
+=================================================
+
+
+
+
+Thank you for using.
