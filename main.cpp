@@ -484,9 +484,17 @@ void CustomerVersion()
 
 int main()
 {
-    //StaffMain();
+    int mode;
+
+    cout << endl << "Staffmode : 1       Customermode : 2" << endl;
+
+    cin >> mode;
     
-    CustomerVersion();
+    if (mode==1)
+      StaffMain();
+    
+    if (mode==2)
+      CustomerVersion();
     
     return 0;
 }
