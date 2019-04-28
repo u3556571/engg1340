@@ -1,0 +1,819 @@
+Staffmode : 1       Customermode : 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4    Occupied    19:13:29   Unpaid |
+|      2     4   Available    --:--:--   ------ |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+
+ [ Type [command] [table_num] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4    Occupied    19:13:29   Unpaid |
+|      2     4    Occupied    04:38:56   Unpaid |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+ * "Occupy 2" is performed.
+ [ Type [command] [table_num] to perform action ]
+
+
+
+ * This table has not yet paid. Confirm paid?
+ [ Type "Yes" / "No" ]
+
+
+
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4   Available    --:--:--   ------ |
+|      2     4    Occupied    04:38:56   Unpaid |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+ * "Free 1" is performed.
+ [ Type [command] [table_num] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|            Billing List of Table  2           |
+|-----------------------------------------------|
+|  Index        Dish_Name       Price  Arrival  |
+|-----------------------------------------------|
+|     4             Fried_Rice    45   Not_Yet  |
+|                                               |
+|-----------------------------------------------|
+|                Total_Amount:    45            |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|       Arrived  Change arrival to arrived      |
+|           Add  Add a dish                     |
+|        Delete  Delete a dish                  |
+|                                               |
+|        Return  Return to the main page        |
+|                                               |
+=================================================
+
+
+ [ Type [command] to perform action ]
+
+ * Type the index of the dish:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|            Billing List of Table  2           |
+|-----------------------------------------------|
+|  Index        Dish_Name       Price  Arrival  |
+|-----------------------------------------------|
+|     4             Fried_Rice    45   Arrived  |
+|                                               |
+|-----------------------------------------------|
+|                Total_Amount:    45            |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|       Arrived  Change arrival to arrived      |
+|           Add  Add a dish                     |
+|        Delete  Delete a dish                  |
+|                                               |
+|        Return  Return to the main page        |
+|                                               |
+=================================================
+
+ * "Arrived 4" is performed.
+ [ Type [command] to perform action ]
+
+
+ * Type the index of the dish:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|            Billing List of Table  2           |
+|-----------------------------------------------|
+|  Index        Dish_Name       Price  Arrival  |
+|-----------------------------------------------|
+|     4             Fried_Rice    45   Arrived  |
+|     1            Beef_Burger    54   Not_Yet  |
+|                                               |
+|-----------------------------------------------|
+|                Total_Amount:    99            |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|       Arrived  Change arrival to arrived      |
+|           Add  Add a dish                     |
+|        Delete  Delete a dish                  |
+|                                               |
+|        Return  Return to the main page        |
+|                                               |
+=================================================
+
+ * "Add 1" is performed.
+ [ Type [command] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4   Available    --:--:--   ------ |
+|      2     4    Occupied    04:38:56   Unpaid |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+
+ [ Type [command] [table_num] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|          Reservation List of Table  4         |
+|-----------------------------------------------|
+|     Date      Time   Surname  Num  Phone_Num  |
+|-----------------------------------------------|
+|               No reservation yet              |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|           Add  Add a reservation              |
+|        Delete  Delete a reservation           |
+|                                               |
+|        Return  Return to the main page        |
+|                                               |
+=================================================
+
+
+ [ Type [command] to perform action ]
+
+
+
+ * Type the date of the reservation:
+ [ In form of [DD/MM/YYYY] ]
+
+
+
+ * Type the time of the reservation:
+ [ In form of [HH:MM] ]
+
+
+ * Type the surname and phone_num of reserver:
+ [ In form of [surname] [phone_num] ]
+
+
+ * Type the number of the people to reserve:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|          Reservation List of Table  4         |
+|-----------------------------------------------|
+|     Date      Time   Surname  Num  Phone_Num  |
+|-----------------------------------------------|
+|  01/05/2019  15:30    CHEUNG    8   98765432  |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|           Add  Add a reservation              |
+|        Delete  Delete a reservation           |
+|                                               |
+|        Return  Return to the main page        |
+|                                               |
+=================================================
+
+ * "Add" is performed.
+ [ Type [command] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4   Available    --:--:--   ------ |
+|      2     4    Occupied    04:38:56   Unpaid |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+
+ [ Type [command] [table_num] to perform action ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+||                                             ||
+||       Table Management System (Staff)       ||
+||                                             ||
+=================================================
+|                                               |
+|             Current Table Status              |
+|-----------------------------------------------|
+| Number  Size   Occupancy  Start_From  Billing |
+|-----------------------------------------------|
+|      1     4   Available    --:--:--   ------ |
+|      2     4    Occupied    04:38:56   Unpaid |
+|      3     2    Occupied    15:25:41   Unpaid |
+|      4     8    Occupied    18:21:49     Paid |
+|                                               |
+=================================================
+
+
+=================================================
+|                                               |
+|       Command  Description                    |
+|-----------------------------------------------|
+|        Occupy  Change occupancy to occupied   |
+|          Free  Change occupancy to available  |
+|          Paid  Change billing to paid         |
+|                                               |
+|       Billing  Check the billing detail       |
+|   Reservation  Check the reservation status   |
+|                                               |
+=================================================
+
+ [ Type [command] [table_num] to perform action ]
