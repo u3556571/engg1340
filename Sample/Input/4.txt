@@ -1,0 +1,19 @@
+1
+Occupy 2
+Free 1
+Yes
+Billing 2
+Arrived
+4
+Add
+1
+Return
+Reservation 4
+Add
+01/05/2019
+15:30
+Cheung 98765432
+8
+Return
+quit
+0
